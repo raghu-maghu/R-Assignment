@@ -195,9 +195,133 @@ Converting to a list from dataframe
 
 ```{r}
 temp_list = df$pretest
+temp_list
 typeof(temp_list)
 ```
 
+converting a dataframe to list
+```{r}
+df.as.list = as.list(df)
+df.as.list
+```
+length of list
+```{r}
+length(df.as.list)
+```
+Load Dplyr 
+```{r}
+library("dplyr")
+```
+
+df %>% arrange(pretest, posttest)
+```{r}
+df %>% arrange(pretest, posttest)
+```
+
+df %>% arrange(pretest, posttest)
+
+```{r}
+df %>% arrange(desc(pretest))
+```
+
+```{r}
+df %>% slice(5:10)
+```
+
+```{r}
+df %>% slice_head(n = 3)
+```
+
+```{r}
+df %>% slice_tail(n = 3)
+```
+```{r}
+df %>% slice_sample(n = 5)
+```
+
+```{r}
+df %>% select(school_setting,school_type,classroom)
+```
+
+```{r}
+df %>% select(school_setting: pretest)
+
+```
+```{r}
+df %>% rename(new_school_setting = school_setting )
+```
+```{r}
+df %>% select(new_school_setting = school_setting )
+
+```
+
+```{r}
+df %>% mutate(pretest_new = pretest/10)
+
+```
+
+```{r}
+df %>% transmute(pretest_new = pretest/10)
+
+```
+```{r}
+df %>% relocate(posttest, .before = pretest)
+
+```
+
+
+```{r}
+select(df,n_student)
+```
+```{r}
+select(df, 1)
+```
+
+```{r}
+mutate(df, "school", 2)
+```
+```{r}
+group_by(df, gender = as.factor(gender))
+```
+```{r}
+median(df$posttest)
+```
+```{r}
+sum(df$pretest)
+```
+```{r}
+sd(df$posttest)
+```
+```{r}
+var (df$pretest)
+```
+```{r}
+mad(df$pretest)
+```
+```{r}
+quantile(df$pretest)
+```
+```{r}
+fivenum(df$pretest)
+```
+```{r}
+log(df$pretest)
+```
+```{r}
+cumsum(df$pretest)
+```
+```{r}
+cummax(df$pretest)
+```
+```{r}
+cummin(df$pretest)
+```
+```{r}
+cumprod(df$pretest)
+```
+```{r}
+with(df, ftable(pretest,posttest))
+```
 
 Add a new chunk by clicking the *Insert Chunk* button on the toolbar or by pressing *Ctrl+Alt+I*.
 
