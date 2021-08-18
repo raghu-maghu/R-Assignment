@@ -419,6 +419,59 @@ df_matrix
 barplot(df_matrix, beside = TRUE, ylab = 'Total Number of Students', xlab = 'Pretest')
 
 ```
+```{r}
+hist(df$posttest)
+```
+Histogram of Pretest
+```{r}
+hist(df$pretest)
+```
+```{r}
+hist(df$posttest, col = 'lightblue', xlab = 'PostTest', ylim = c(0, 0.1), freq = FALSE)
+```
+Using the Density Function to Draw a Graph
+```{r}
+plot(density(df$posttest))
+```
+```{r}
+hist(df$posttest, freq = F)
+lines(density(df$posttest), lty = 2)
+lines(density(df$posttest, k = 'rectangular'))
+
+```
+```{r}
+qqnorm(df$pretest)
+```
+```{r}
+qqnorm(df$posttest, main = 'QQ plot of df$posttest', xlab = 'Theoretical', 
+ylab = 'Quantiles for df$posttest')
+qqline(df$posttest, lwd = 2, lty = 2)
+```
+```{r}
+boxplot(df$posttest ~ df$school, data = df)
+```
+```{r}
+pairs(~ pretest + posttest, data = df)
+```
+```{r}
+library(dplyr)
+```
+```{r}
+temp = df %>% filter(df$school == "ANKYI")
+plot(temp$pretest, temp$posttest, pch = 25)
+```
+```{r}
+pairs(~ pretest + posttest, data = temp)
+```
+```{r}
+plot(temp$posttest, type = 'l' )
+```
+```{r}
+pie(temp$posttest)
+```
+```{r}
+dotchart(temp$posttest)
+```
 
 Add a new chunk by clicking the *Insert Chunk* button on the toolbar or by pressing *Ctrl+Alt+I*.
 
