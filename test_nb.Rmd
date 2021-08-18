@@ -322,6 +322,103 @@ cumprod(df$pretest)
 ```{r}
 with(df, ftable(pretest,posttest))
 ```
+```{r}
+library("ggplot2")
+```
+
+```{r}
+student.m = tapply(df$pretest, df$posttest, FUN = mean)
+student.sd = tapply(df$pretest, df$posttest, FUN = sd)
+student.l = tapply(df$pretest, df$posttest, FUN = length)
+student.se = student.sd / sqrt(student.l)
+```
+
+```{r}
+summary(df)
+```
+```{r}
+ggplot(data=df,aes(x=school_setting, y=pretest)) + geom_point()
+```
+
+```{r}
+ggplot(data=df,aes(x=school, y=pretest)) + geom_point()
+```
+```{r}
+ggplot(data=df,aes(x=school_setting, y=pretest, colour= gender)) + geom_point()
+```
+```{r}
+```
+
+
+```{r}
+table(df$teaching_method)
+```
+
+
+```{r}
+boxplot(df$n_student ~ df$school_type, data=df)
+```
+```{r}
+boxplot(df$pretest ~ df$school_type, data=df)
+
+```
+```{r}
+table(df$gender)
+
+```
+
+```{r}
+boxplot(df$pretest ~ df$gender, data=df)
+```
+```{r}
+plot(df$n_student,df$pretest, xlab = 'No Of Students', ylab = 'Pretest',
+pch = 18, cex = 2, col = 'gray50', xlim = c(0, 50), ylim = c(0, 50))
+```
+```{r}
+plot(df)
+```
+```{r}
+plot(df$n_student,type = 'l')
+
+```
+```{r}
+plot(df$n_student,type = 'p')
+
+```
+```{r}
+plot(df$n_student,type = 'o')
+
+
+```
+```{r}
+plot(df$n_student,type = 'c')
+
+```
+```{r}
+plot(df$pretest, type='b')
+
+```
+```{r}
+pie(df$n_student, clockwise = TRUE, init.angle = 180)
+```
+```{r}
+dotchart(df$n_student)
+```
+```{r}
+dotchart(df$n_student,color = 'gray30', gcolor = 'black', lcolor = 'gray30',
+cex = 0.8, xlab = 'Student Counts', bg = 'gray90', pch = 21)
+```
+```{r}
+barplot(df$n_student)
+```
+```{r}
+df_matrix = data.matrix(df)
+df_matrix
+```
+```{r}
+barplot(df_matrix, beside = TRUE, ylab = 'Total Number of Students', xlab = 'Pretest')
+
+```
 
 Add a new chunk by clicking the *Insert Chunk* button on the toolbar or by pressing *Ctrl+Alt+I*.
 
